@@ -10,14 +10,6 @@ from PIL import Image, UnidentifiedImageError
 from urllib.request import urlopen, pathname2url
 import numpy as np
 
-
-def rgba_to_rgb(img, color=(255, 255, 255)):
-    img.load()
-    new_img = Image.new('RGB', img.size, color)
-    new_img.paste(img, mask=img.split()[3])
-    return new_img
-
-
 def img_from_url(url):
     try:
         img = Image.open(urlopen(url))
@@ -25,8 +17,6 @@ def img_from_url(url):
         abort(404, "Invalid URL")
     except UnidentifiedImageError:
         abort(404, "Image not found")
-    if img.mode == "RGBA":
-        img = rgba_to_rgb(img)
     return img
 
 
