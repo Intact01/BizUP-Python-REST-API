@@ -1,6 +1,6 @@
 import urllib.parse
 
-import numpy
+from flask import abort
 import scipy
 import scipy.misc
 import scipy.cluster
@@ -25,9 +25,9 @@ def img_from_url(url):
 
 
 def get_dominant_color(arr):
+    arr = arr.astype(float)
     # finding clusters
     codes, dist = scipy.cluster.vq.kmeans(arr, 5)
-    # print('cluster centres:\n', codes)
 
     vecs, dist = scipy.cluster.vq.vq(arr, codes)  # assign codes
     counts, bins = scipy.histogram(vecs, len(codes))  # count occurrences
@@ -37,32 +37,23 @@ def get_dominant_color(arr):
     color = binascii.hexlify(bytearray(int(c) for c in peak)).decode('ascii')
     return color, peak
 
-def get_border_color(img):
+
+def get_colors(img):
     arr = np.asarray(img)
     shape = arr.shape
     print(shape)
-    row_offset = shape[0] // 10
-    col_offset = shape[1] // 10
+    row_offset = shape[0] // 15
+    col_offset = shape[1] // 15
     border_arr = []
+    logo_arr = []
     for row in range(shape[0]):
         for col in range(shape[1]):
             if row < row_offset or row >= (shape[0] - row_offset) or col < col_offset or col >= (shape[1] - col_offset):
                 border_arr.append((arr[row][col]))
-    border_arr = np.array(border_arr)
-    border_shape = border_arr.shape
-    border_arr = border_arr.reshape(border_shape).astype(float)
-    color, peak = get_dominant_color(border_arr)
-    print('most frequent is %s (#%s)' % (peak, color))
-    return "#" + color[:6]
-
-
-def get_primary_color(img):
-    arr = np.asarray(img)
-    shape = arr.shape
-    print(shape)
-    arr = arr.reshape(scipy.product(shape[:2]), shape[2]).astype(float)
-    color, peak = get_dominant_color(arr)
-    print('most frequent is %s (#%s)' % (peak, color))
-    return "#" + color[:6]
-
-# def remove_background(img)
+            else:
+                logo_arr.append(arr[row][col])
+    border, peak_border = get_dominant_color(np.array(border_arr))
+    primary, peak_primary = get_dominant_color(np.array(logo_arr))
+    print('most frequent border is %s (#%s)' % (peak_border, border))
+    print('most frequent  logo is %s (#%s)' % (peak_primary, primary))
+    return ("#" + border[:6]).upper(), ("#" + primary[:6]).upper()
