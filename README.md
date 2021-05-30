@@ -25,6 +25,7 @@ Replace <image_url> by your logo image URL.
 
 ## Tests
 ### Testcase 1
+[Input Logo 1](https://storage.googleapis.com/bizupimg/profile_photo/WhatsApp%20Image%202020-08-23%20at%203.11.46%20PM%20-%20Himanshu%20Kohli.jpeg)
 ```shell
 $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile_photo/WhatsApp%20Image%202020-08-23%20at%203.11.46%20PM%20-%20Himanshu%20Kohli.jpeg
 {
@@ -34,6 +35,7 @@ $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile
 ```
 
 ### Testcase 2
+[Input Logo 2](https://storage.googleapis.com/bizupimg/profile_photo/918527129869%20instagram-logo-png-2451.png)
 ```shell
 $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile_photo/918527129869%20instagram-logo-png-2451.png
 {
@@ -43,6 +45,7 @@ $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile
 ```
 
 ### Testcase 3
+[Input Logo 3](https://storage.googleapis.com/bizupimg/profile_photo/bhawya_logo.jpeg)
 ```shell
 $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile_photo/bhawya_logo.jpeg
 {
@@ -52,6 +55,7 @@ $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile
 ```
 
 ### Testcase 4
+[Input Logo 4](https://storage.googleapis.com/bizupimg/profile_photo/kppl_logo.png)
 ```shell
 $ curl http://127.0.0.1:5000?src=https://storage.googleapis.com/bizupimg/profile_photo/kppl_logo.png
 {
