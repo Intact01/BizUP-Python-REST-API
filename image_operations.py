@@ -1,3 +1,4 @@
+import urllib.parse
 from urllib.error import URLError
 from flask import abort
 import scipy
@@ -11,8 +12,11 @@ import numpy as np
 
 # get PIL.Image.Image from url
 def img_from_url(url):
+    url_1 = url[:6]
+    url = url[6:]
+    url = urllib.parse.quote(url)
     try:
-        img = Image.open(urlopen(url))
+        img = Image.open(urlopen(url_1 + url))
     except URLError:
         abort(404, "Invalid URL")
     except UnidentifiedImageError:
