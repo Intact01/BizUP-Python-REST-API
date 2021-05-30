@@ -15,8 +15,8 @@ class ColorExtraction(Resource):
         src = args["src"]
         image = img_from_url(src)
         border, primary = get_colors(image)
-        return {"border": border,
-                "primary": primary}
+        return {"logo_border": border,
+                "dominant_color": primary}
 
 
 api.add_resource(ColorExtraction, "/")
