@@ -1,4 +1,4 @@
-# BizUp Python REST API Task
+# Python REST API Task
 Send Get request to API with src url of a logo image as attribute to get 2 color values: 
 - Border color of image
 - Primary logo color
