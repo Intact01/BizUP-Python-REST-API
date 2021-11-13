@@ -6,8 +6,8 @@ Send Get request to API with src url of a logo image as attribute to get 2 color
 ## Installation and Run
 Clone the repo on your device and install the dependencies:
 ```shell
-$ git clone https://github.com/Intact01/BizUP-Python-REST-API.git
-$ cd BizUP-Python-REST-API
+$ git clone https://github.com/Intact01/Python-REST-API.git
+$ cd Python-REST-API
 $ pip install -r requirements.txt
 ```
 NOTE: Make sure you have python3 and pip installed. If not then first install them from apt and then try installing dependencies.</br>
